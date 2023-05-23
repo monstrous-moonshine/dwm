@@ -1848,6 +1848,10 @@ showhide(Client *c)
 		return;
 	if (ISVISIBLE(c)) {
 		/* show clients top down */
+		if ((!c->mon->lt[c->mon->sellt]->arrange || c->isfloating) && !c->isfullscreen) {
+			XMoveWindow(dpy, c->win, c->x, c->y);
+			resize(c, c->x, c->y, c->w, c->h, c->bw, 0);
+		}
 		window_map(dpy, c->win, 1);
 		showhide(c->snext);
 	} else {
