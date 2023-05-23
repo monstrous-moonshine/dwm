@@ -66,6 +66,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *poffcmd[]  = { "shutdown", "now", NULL };
 static const char *brwsrcmd[] = { "firefox", NULL };
+static const char *killcmd[]  = { "pkill", "dwm", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,7 +107,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,          {.v = killcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = poffcmd } },
 };
 
